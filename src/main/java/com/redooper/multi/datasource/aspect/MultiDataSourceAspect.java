@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.core.annotation.Order;
 
 import java.lang.reflect.Method;
 
@@ -17,6 +18,7 @@ import java.lang.reflect.Method;
  * @Description:
  */
 @Aspect
+@Order(Byte.MIN_VALUE)
 public class MultiDataSourceAspect {
 
     @Pointcut("@annotation(com.redooper.multi.datasource.annotation.LookupKey) || @within(com.redooper.multi.datasource.annotation.LookupKey)")
