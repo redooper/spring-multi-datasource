@@ -27,7 +27,8 @@ public class MultiDataSourceManager implements Closeable {
     }
 
     public static String peek() {
-        return LOOKUP_KEY_HOLDER.get().peek();
+        LinkedList<String> lookupKeys = LOOKUP_KEY_HOLDER.get();
+        return lookupKeys == null ? null : lookupKeys.peek();
     }
 
     public static void poll() {

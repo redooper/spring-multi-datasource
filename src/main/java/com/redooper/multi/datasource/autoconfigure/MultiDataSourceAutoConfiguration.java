@@ -2,8 +2,6 @@ package com.redooper.multi.datasource.autoconfigure;
 
 import com.redooper.multi.datasource.aspect.MultiDataSourceAspect;
 import com.redooper.multi.datasource.core.MultiDataSource;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -20,7 +18,6 @@ import java.util.Map;
 @Configuration
 @Import(MultiDataSourceProperties.class)
 @EnableAspectJAutoProxy
-@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 public class MultiDataSourceAutoConfiguration {
 
     @Bean
