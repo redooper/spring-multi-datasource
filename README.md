@@ -50,7 +50,7 @@ mvn clean install -Dmaven.test.skip=true
 <dependency>
     <groupId>com.redooper</groupId>
     <artifactId>spring-multi-datasource</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
 </dependency>
 ```
 

@@ -11,24 +11,18 @@ import java.util.LinkedList;
  */
 public class MultiDataSourceManager implements Closeable {
 
-    private static final ThreadLocal<LinkedList<String>> LOOKUP_KEY_HOLDER = new ThreadLocal<>();
+    private static final ThreadLocal<LinkedList<String>> LOOKUP_KEY_HOLDER = ThreadLocal.withInitial(LinkedList::new);
 
     public MultiDataSourceManager(String lookupKey) {
         push(lookupKey);
     }
 
     public static void push(String lookupKey) {
-        LinkedList<String> lookupKeys = LOOKUP_KEY_HOLDER.get();
-        if (lookupKeys == null) {
-            lookupKeys = new LinkedList<>();
-            LOOKUP_KEY_HOLDER.set(lookupKeys);
-        }
-        lookupKeys.push(lookupKey);
+        LOOKUP_KEY_HOLDER.get().push(lookupKey);
     }
 
     public static String peek() {
-        LinkedList<String> lookupKeys = LOOKUP_KEY_HOLDER.get();
-        return lookupKeys == null ? null : lookupKeys.peek();
+        return LOOKUP_KEY_HOLDER.get().peek();
     }
 
     public static void poll() {
