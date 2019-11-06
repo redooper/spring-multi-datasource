@@ -25,11 +25,11 @@ public class MultiDataSourceAspect {
     public void lookupKeyPointcut() {
     }
 
-    @Around("com.redooper.multi.datasource.aspect.MultiDataSourceAspect.lookupKeyPointcut()")
+    @Around("lookupKeyPointcut()")
     public Object lookupKeyAround(ProceedingJoinPoint pjp) throws Throwable {
         MethodSignature signature = (MethodSignature) pjp.getSignature();
         Method method = signature.getMethod();
-        LookupKey lookupKey = AnnotationUtils.getAnnotation(method, LookupKey.class);
+        LookupKey lookupKey = AnnotationUtils.findAnnotation(method, LookupKey.class);
         if (lookupKey == null) {
             Class clazz = signature.getDeclaringType();
             lookupKey = AnnotationUtils.findAnnotation(clazz, LookupKey.class);
